@@ -1,0 +1,37 @@
+public function creategroup(){
+        return view('groups.create');
+    }
+
+    public function admincreategroup(Request $request){
+        $groupData = $request->validate([
+            'name' => ['required', 'max:255', 'unique:groups'],
+            'amount' => ['required', 'numeric'],
+            'interval' => ['required', 'numeric'],
+            'max_members' => ['required', 'numeric']
+        ]);
+        
+        $group = Group::create($groupData);
+        return redirect()->route('showgroups');
+        
+    }
+
+    public function getgroups(){
+        $groups = Group::where('status', 'active')->get();
+        dd($groups);
+        return view('admins.groups', compact('groups'));
+    }
+
+    // model
+    protected $fillable = [
+        'name',
+        'amount',
+        'interval',
+        'max_members'
+    ];
+
+    //migrations
+                $table->string('name')->unique();
+            $table->decimal('amount', total:10, places:2);
+            $table->integer('interval');
+            $table->integer('max_members');
+            $table->string('status')->default('active');
