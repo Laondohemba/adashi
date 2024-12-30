@@ -25,17 +25,17 @@
                     @auth
                         <form action="{{route('userlogout')}}" method="post">
                             @csrf
-                            <button class="btn btn-danger">Logout</button>
+                            <button class="btn btn-danger btn-sm">Logout</button>
                         </form>
                     @endauth
 
                     @guest
                         
                     <li>
-                        <a href="{{route('usersignupform')}}" class="btn btn-primary">Sign Up</a>
+                        <a href="{{route('usersignupform')}}" class="btn btn-primary btn-sm">Sign Up</a>
                     </li>
                     <li>
-                        <a href="{{route('userloginform')}}" class="btn btn-primary">Login</a>
+                        <a href="{{route('userloginform')}}" class="btn btn-primary btn-sm">Login</a>
                     </li>
                     @endguest
                 </div>
@@ -46,7 +46,7 @@
         <div class="my-container">
             <div class="welcome-container text-center text-white p-5">
                 <h3>Welcome to {{ env('APP_NAME') }}</h3>
-                <p>Here, you can create an account, display your projects and discover the profiles of others</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis harum, facilis laudantium non quia excepturi hic itaque perspiciatis? Quasi, mollitia dolor soluta aut laborum officia magnam? Exercitationem perspiciatis quis minima!</p>
                 <div class="d-flex justify-content-center">
                     <a href="{{route('usersignupform')}}" class="btn btn_color me-4">Sign Up</a>
                     <a href="{{route('userloginform')}}" class="btn btn_color">Login</a>
@@ -55,7 +55,7 @@
         </div>
         @endguest
         <!-- Welcome -->
-        <div class="my-container">
+        <div class="my-container" style="min-height: 100vh">
             {{$slot}}
         </div>
 

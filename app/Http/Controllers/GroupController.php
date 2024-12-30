@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Group;
+use App\Models\UserGroup;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GroupController extends Controller
 {
@@ -40,6 +42,53 @@ class GroupController extends Controller
         return redirect()->route('showgroups');
     }
 
+    //show groups for user
+
+    public function showGroupsForUser()
+    {
+        $groups = Group::get();
+        return view('users.groups', ['groups' => $groups]);
+    }
+
+    //join group
+    public function joinGroup(Group $group)
+    {
+        $exits = UserGroup::where('user_id', Auth::id())->where('group_id', $group->id)->exists();
+        $groupId = $group->id;
+
+        if ($exits) {
+            return back()->with("alreadyjoined{$groupId}", 'You are already a member of this group!');
+        }
+
+        if (Auth::user()->userGroups()->create([
+            'group_id' => $groupId
+        ])) {
+
+            return redirect()->route('userdashboard');
+        } 
+        else 
+        {
+
+            return back()->withErrors('error', 'Error while processing request');
+        }
+    }
+
+    //show group members
+    public function groupMembers(Group $group)
+    {
+        $groupMembers = UserGroup::with('userGroups')->where('group_id', $group->id)->get();
+
+        return view('admins.group_members', ['groupMembers' => $groupMembers]);
+    }
+
+    //approve group membership
+    public function approveMembership($id)
+    {
+        $group = UserGroup::find($id);
+        $group->update(['status' => 'Approved']);
+
+        return redirect()->route('group.members', [$group->id]);
+    }
     /**
      * Display the specified resource.
      */
