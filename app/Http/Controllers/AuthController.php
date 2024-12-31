@@ -30,7 +30,7 @@ class AuthController extends Controller
     $user = User::create($user_data);
 
     Auth::login($user);
-    return redirect()->route('userdashboard');
+    return redirect()->route('userdashboard')->with('success', 'Account created successfully');
     }
 
     public function userlogout(){

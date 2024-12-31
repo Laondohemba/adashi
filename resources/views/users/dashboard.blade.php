@@ -1,6 +1,11 @@
 <x-layout>
     <x-user_nav></x-user_nav>
         @if ($userGroups->count() > 0)
+        @if (session('success'))
+            <div class="text-bg-success p-2">
+              {{session('success')}}
+            </div>
+        @endif
         <h3 class="text-center my-3">Your Groups</h3>
             @foreach ($userGroups as $userGroup)
             <div class="card my-4 mx-auto" style="width: 25rem;">
