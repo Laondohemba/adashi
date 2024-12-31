@@ -38,7 +38,7 @@ class AuthController extends Controller
         $user = request()->user();
 
         Auth::logout($user);
-        return redirect()->route('userloginform');
+        return redirect()->route('login');
     }
 
     public function userlogin(Request $request){
@@ -48,7 +48,7 @@ class AuthController extends Controller
         ]);
 
         if(Auth::attempt($user, $request->remember)){
-            return redirect()->intended('user.dashboard');
+            return redirect()->intended('user/dashboard');
         }else{
             return back()->withErrors([
                 'loginfailed' => 'Invalid username or password! Note that passwords are case sensitive.'

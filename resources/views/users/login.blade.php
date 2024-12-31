@@ -63,6 +63,7 @@
                         <p class="mt-5">Don't have an account?
                             <a href="{{ route('usersignupform') }}" class="text-decoration-none">Sign Up</a>
                         </p>
+                        <a href="{{route('adminloginform')}}" class="text-decoration-none">Login as admin</a>
                     </form>
 
                   </div>

@@ -49,7 +49,7 @@
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis harum, facilis laudantium non quia excepturi hic itaque perspiciatis? Quasi, mollitia dolor soluta aut laborum officia magnam? Exercitationem perspiciatis quis minima!</p>
                 <div class="d-flex justify-content-center">
                     <a href="{{route('usersignupform')}}" class="btn btn_color me-4">Sign Up</a>
-                    <a href="{{route('userloginform')}}" class="btn btn_color">Login</a>
+                    <a href="{{route('login')}}" class="btn btn_color">Login</a>
                 </div>
             </div>
         </div>
