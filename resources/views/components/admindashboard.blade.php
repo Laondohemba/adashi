@@ -23,7 +23,7 @@
                 </div>
                 <div class="sections col-9">
                     @if (auth('admin')->user())
-                        <form action="{{ route('userlogout') }}" method="post">
+                        <form action="{{ route('admin.logout') }}" method="post">
                             @csrf
                             <button class="btn btn-danger btn-sm">Logout</button>
                         </form>

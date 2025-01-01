@@ -78,6 +78,12 @@ class AdminController extends Controller
     public function showgroups(){
         return view('admins.groups');
     }
+    public function logout(){
+        $admin = auth('admin')->user();
+        Auth::guard('admin')->logout($admin);
+
+        return redirect()->route('adminloginform');
+    }
 
     /**
      * Display the specified resource.

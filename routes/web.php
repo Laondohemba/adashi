@@ -35,6 +35,8 @@ Route::prefix('admin')->middleware(AdminAuthenticate::class)->group(function () 
     Route::get('/deposits', [DepositController::class, 'index'])->name('deposits.index');
     Route::get('/deposits/pending', [DepositController::class, 'pendingDeposits'])->name('deposits.pending');
     Route::post('/deposits/{deposit}', [DepositController::class, 'approveDeposit'])->name('deposits.approve');
+    Route::post('logout', [AdminController::class, 'logout'])->name('admin.logout');
+
 });
 
 
