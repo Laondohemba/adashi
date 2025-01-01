@@ -59,13 +59,14 @@ class AdminController extends Controller
 
     //admin login
     public function adminlogin(Request $request){
+        
         $adminData = $request->validate([
             'username' => ['required', 'max:255'],
             'password' => 'required',
         ]);
 
-        if(Auth::attempt($adminData, $request->remember)){
-            return redirect()->route('admindashboard');
+        if(Auth::guard('admin')->attempt($adminData, $request->remember)){
+            return redirect()->route('admin.dashboard');
         }else{
             return back()->withErrors([
                 'loginfailed' => 'Invalid credentials! Note that passwords are case sensitive.'

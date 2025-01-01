@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\AdminAuthenticate;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,6 +22,11 @@ Route::middleware('guest')->group(function () {
     Route::post('/admin/login', [AdminController::class, 'adminlogin'])->name('adminlogin');
 });
 
+Route::prefix('admin')->middleware(AdminAuthenticate::class)->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+});
+
+
 Route::middleware('auth')->group(function () {
 
     Route::get('/user/dashboard', [UserController::class, 'userdashboard'])->name('userdashboard');
@@ -28,8 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/user/dashboard/{group}', [GroupController::class, 'joinGroup'])->name('user.joinGroup');
     Route::get('/user/groups', [GroupController::class, 'showGroupsForUser'])->name('user.showGroups');
 
-
-    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admindashboard');
+    // Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admindashboard');
     Route::get('/admin/create', [AdminController::class, 'create'])->name('addadminform');
     Route::post('/admin/create', [AdminController::class, 'store'])->name('createadmin');
     // Route::get('/admin.groups', [AdminController::class, 'showgroups'])->name('showgroups');

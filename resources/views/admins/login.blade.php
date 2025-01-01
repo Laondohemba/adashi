@@ -61,7 +61,7 @@
                         <button class="w-100 btn btn_color mt-4" type="submit">Login</button>
 
                         <p class="mt-5">Don't have an account?
-                            <a href="{{ route('usersignupform') }}" class="text-decoration-none">Sign Up</a>
+                            <a href="{{ route('createadmin') }}" class="text-decoration-none">Sign Up</a>
                         </p>
                     </form>
 

@@ -65,7 +65,7 @@
                         
     
                         <p class="mt-3">Already have an account?
-                            <a href="{{route('userloginform')}}" class="text-decoration-none">Login</a>
+                            <a href="{{route('login')}}" class="text-decoration-none">Login</a>
                         </p>
                     </div>
                 </div>
