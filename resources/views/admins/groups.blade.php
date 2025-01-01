@@ -1,6 +1,6 @@
-<x-layout>
 
-    <x-admindashboard></x-admindashboard>
+
+    <x-admindashboard>
 
     <div class="container my-5">
         <h2 class="text-center">Groups</h2>
@@ -45,4 +45,4 @@
                 </div>
         @endforeach
     </div>
-</x-layout>
+</x-admindashboard>

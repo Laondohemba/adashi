@@ -1,5 +1,5 @@
-<x-layout>
-    <x-admindashboard></x-admindashboard>
+
+    <x-admindashboard>
     @if ($pendingDeposits->count() > 0)
     <h3 class="text-center my-4">Pending Deposits</h3>
 
@@ -35,4 +35,4 @@
     <h3 class="text-center mt-5">No pending deposits available</h3>
     @endif
 
-</x-layout>
+</x-admindashboard>

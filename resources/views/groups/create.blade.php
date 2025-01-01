@@ -1,5 +1,5 @@
-<x-layout>
-    <x-admindashboard></x-admindashboard>
+
+    <x-admindashboard>
 
     <div class="container my-5">
         <h2 class="text-center">Create group</h2>
@@ -45,4 +45,4 @@
             </div>
         </form>
     </div>
-</x-layout>
+</x-admindashboard>

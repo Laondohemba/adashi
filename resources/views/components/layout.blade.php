@@ -35,7 +35,7 @@
                         <a href="{{route('usersignupform')}}" class="btn btn-primary btn-sm">Sign Up</a>
                     </li>
                     <li>
-                        <a href="{{route('userloginform')}}" class="btn btn-primary btn-sm">Login</a>
+                        <a href="{{route('login')}}" class="btn btn-primary btn-sm">Login</a>
                     </li>
                     @endguest
                 </div>
