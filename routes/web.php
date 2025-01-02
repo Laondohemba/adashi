@@ -3,13 +3,14 @@
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContributionController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminAuthenticate;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/user/dashboard');
 })->name('home');
 
 Route::middleware('guest')->group(function () {
@@ -24,8 +25,6 @@ Route::middleware('guest')->group(function () {
 
 Route::prefix('admin')->middleware(AdminAuthenticate::class)->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-    Route::get('/create', [AdminController::class, 'create'])->name('addadminform');
-    Route::post('/create', [AdminController::class, 'store'])->name('createadmin');
     Route::get('/groups', [GroupController::class, 'index'])->name('showgroups');
     Route::get('/group/create', [GroupController::class, 'create'])->name('creategroup');
     Route::post('/group/create', [GroupController::class, 'store'])->name('admincreategroup');
@@ -38,6 +37,8 @@ Route::prefix('admin')->middleware(AdminAuthenticate::class)->group(function () 
     Route::post('logout', [AdminController::class, 'logout'])->name('admin.logout');
 
 });
+Route::get('/admin/create', [AdminController::class, 'create'])->name('addadminform');
+Route::post('/admin/create', [AdminController::class, 'store'])->name('createadmin');
 
 
 Route::middleware('auth')->group(function () {
@@ -51,5 +52,5 @@ Route::middleware('auth')->group(function () {
     Route::post('/user/deposit', [DepositController::class, 'store'])->name('deposits.store');
     Route::get('/user/deposit/history', [DepositController::class, 'history'])->name('deposits.history');
     Route::post('/user/deposit/proof/{deposit}', [DepositController::class, 'depositProof'])->name('deposits.proof');
-
+    Route::post('user/contribute/{group}', [ContributionController::class, 'contribute'])->name('group.contribute');
 });

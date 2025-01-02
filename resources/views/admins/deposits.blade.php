@@ -2,7 +2,7 @@
 
     @if ($deposits->count() > 0)
         <div class="d-flex mt-5 justify-content-between">
-            <h3 class="text-center">Approved Deposits</h3>
+            <h3 class="text-center">Deposits</h3>
             <a href="{{ route('deposits.pending') }}" class="btn btn-sm btn-outline-secondary">Pending Deposits</a>
         </div>
         <table class="table">

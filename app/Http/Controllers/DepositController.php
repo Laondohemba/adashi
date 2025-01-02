@@ -18,7 +18,7 @@ class DepositController extends Controller
             'amount_deposited' => ['required', 'min:5']
         ],
         [
-            'amount.min' => 'Minimum amount to deposit is 10000'
+            'amount_deposited.min' => 'Minimum amount to deposit is 10000'
         ]);
 
         Auth::user()->deposits()->create($amount_deposited);
@@ -43,7 +43,7 @@ class DepositController extends Controller
     }
 
     public function index(){
-        $deposits = Deposit::with('userDeposits')->where('status', 'Approved')->get();
+        $deposits = Deposit::with('userDeposits')->whereNotNull('proof_of_deposit')->get();
         // dd($deposits); 
         return view('admins.deposits', ['deposits' => $deposits]);
     }

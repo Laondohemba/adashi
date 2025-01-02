@@ -48,7 +48,7 @@ class AdminController extends Controller
         $admin = Admin::create($adminData);
 
         Auth::login($admin);
-        return redirect()->route('admindashboard');
+        return redirect()->route('admin.dashboard');
         
     }
 
