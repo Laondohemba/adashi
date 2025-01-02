@@ -29,6 +29,7 @@ Route::prefix('admin')->middleware(AdminAuthenticate::class)->group(function () 
     Route::get('/group/create', [GroupController::class, 'create'])->name('creategroup');
     Route::post('/group/create', [GroupController::class, 'store'])->name('admincreategroup');
     Route::get('groups/members/{group}', [GroupController::class, 'groupMembers'])->name('group.members');
+    Route::get('/contributions', [ContributionController::class, 'contributions'])->name('admin.contribution');
 
     Route::post('group/members/{group}', [GroupController::class, 'approveMembership'])->name('group.approve');
     Route::get('/deposits', [DepositController::class, 'index'])->name('deposits.index');
@@ -53,4 +54,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/user/deposit/history', [DepositController::class, 'history'])->name('deposits.history');
     Route::post('/user/deposit/proof/{deposit}', [DepositController::class, 'depositProof'])->name('deposits.proof');
     Route::post('user/contribute/{group}', [ContributionController::class, 'contribute'])->name('group.contribute');
+
+    Route::get('/user/contributions', [ContributionController::class, 'userContributions'])->name('user.contribution');
 });

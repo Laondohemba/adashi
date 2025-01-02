@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Group;
+use App\Models\Contribution;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,6 +34,7 @@ class ContributionController extends Controller
         if(Auth::user()->contributions()->create($data))
         {
             $user->decrement('account_balance', $group->amount);
+
             return redirect()->route('userdashboard')->with('success', 'Contribution made successfully');
         }
         else
@@ -40,6 +42,20 @@ class ContributionController extends Controller
             return redirect()->route('userdashboard')-with('error', 'Unable to make contribution');
         }
 
-        dd($data);
+    }
+
+    public function contributions()
+    {
+        $contributions = Contribution::with('user')->with('group')->get();
+
+        return view('admins.contributions', ['contributions' => $contributions]);
+    }
+
+    public function userContributions()
+    {
+        $contributions = Contribution::with('group')->where('user_id', Auth::id())->get();
+        // dd($contributions);
+
+        return view('users.contributions', ['contributions' => $contributions]);
     }
 }

@@ -18,7 +18,7 @@
             <div class="row head align-items-center">
                 <div class="name col-2 text-white ms-2 ps-5">
                     <h1>
-                        <a href="{{ route('home') }}" class="text-decoration-none text-light">{{ env('APP_NAME') }} </a>
+                        <a href="{{ route('admin.dashboard') }}" class="text-decoration-none text-light">{{ env('APP_NAME') }} </a>
                     </h1>
                 </div>
                 <div class="sections col-9">
@@ -43,16 +43,22 @@
           <h3>Welcome back 👋🏿 {{ auth('admin')->user()->username }}</h3>
           <nav class="navbar navbar-expand-lg bg-body-tertiary display-6">
               <div class="container-fluid">
-                  <a class="navbar-brand" href="{{ route('showgroups') }}">Groups</a>
+                  <a class="navbar-brand" href="{{ route('admin.dashboard') }}">Dashboard</a>
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon"></span>
                   </button>
                   <div class="collapse navbar-collapse" id="navbarNav">
                       <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('showgroups') }}">Groups</a>
+                        </li>
                           <li class="nav-item">
-                              <a class="nav-link active" href="{{ route('creategroup') }}">Create group</a>
+                              <a class="nav-link" href="{{ route('creategroup') }}">Create group</a>
                           </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.contribution') }}">Contributions</a>
+                        </li>
   
                           <li class="nav-item">
                               <a class="nav-link" href="#">Users</a>
@@ -65,6 +71,7 @@
                           <li class="nav-item">
                               <a class="nav-link" href="#">Withdrawals</a>
                           </li>
+                          
                       </ul>
                   </div>
               </div>

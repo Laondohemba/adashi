@@ -42,18 +42,22 @@ class DepositController extends Controller
         return redirect()->route('deposits.history');
     }
 
-    public function index(){
+    public function index()
+    {
         $deposits = Deposit::with('userDeposits')->whereNotNull('proof_of_deposit')->get();
-        // dd($deposits); 
+        
         return view('admins.deposits', ['deposits' => $deposits]);
     }
 
-    public function pendingDeposits(){
+    public function pendingDeposits()
+    {
         $pendingDeposits = Deposit::with('userDeposits')->whereNotNull('proof_of_deposit')->where('status', 'pending')->get();
+        
         return view('admins.pending_deposits', ['pendingDeposits' => $pendingDeposits]);
     }
 
-    public function approveDeposit(Request $request, $id){
+    public function approveDeposit(Request $request, $id)
+    {
         $request->validate([
             'amount_approved' => ['required']
         ]);

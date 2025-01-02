@@ -9,7 +9,7 @@
             <thead>
                 <tr>
                     <th scope="col">S/N</th>
-                    <th scope="col">Depositor</th>
+                    <th scope="col">User</th>
                     <th scope="col">Amount deposited</th>
                     <th scope="col">Amount approved</th>
                     <th scope="col">Time deposited</th>
@@ -20,8 +20,8 @@
                     <tr>
                         <th scope="row"> {{ $loop->iteration }} </th>
                         <td>{{ $deposit->userDeposits->username }}</td>
-                        <td>{{ $deposit->amount_deposited }}</td>
-                        <td>{{ $deposit->amount_approved }}</td>
+                        <td>&#8358; {{ number_format($deposit->amount_deposited) }}</td>
+                        <td>&#8358; {{ number_format($deposit->amount_approved) }}</td>
                         <td>{{ $deposit->created_at->diffForHumans() }}</td>
                     </tr>
                 @endforeach
