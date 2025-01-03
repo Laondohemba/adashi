@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContributionController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminAuthenticate;
 
@@ -30,6 +31,8 @@ Route::prefix('admin')->middleware(AdminAuthenticate::class)->group(function () 
     Route::post('/group/create', [GroupController::class, 'store'])->name('admincreategroup');
     Route::get('groups/members/{group}', [GroupController::class, 'groupMembers'])->name('group.members');
     Route::get('/contributions', [ContributionController::class, 'contributions'])->name('admin.contribution');
+    Route::get('/payments', [PaymentController::class, 'payments'])->name('admin.payments');
+    Route::post('/payment/{payment}', [PaymentController::class, 'approvePayment'])->name('payment.approve');
 
     Route::post('group/members/{group}', [GroupController::class, 'approveMembership'])->name('group.approve');
     Route::get('/deposits', [DepositController::class, 'index'])->name('deposits.index');
@@ -55,5 +58,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/user/deposit/proof/{deposit}', [DepositController::class, 'depositProof'])->name('deposits.proof');
     Route::post('user/contribute/{group}', [ContributionController::class, 'contribute'])->name('group.contribute');
 
+    Route::post('/user/payment/{group}', [PaymentController::class, 'requestPayment'])->name('payment.request');
+    Route::get('/user/payments', [PaymentController::class, 'index'])->name('user.payments');
     Route::get('/user/contributions', [ContributionController::class, 'userContributions'])->name('user.contribution');
 });

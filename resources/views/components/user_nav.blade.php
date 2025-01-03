@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between">
-  <h3>Welcome back 👋🏿 {{auth()->user()->username}}</h3>
+  <h3>Welcome back 👋🏿 {{ ucwords(auth()->user()->username) }}</h3>
   <p>Account Balance: <strong>&#8358; {{ number_format(auth()->user()->account_balance, 2) }} </strong></p>
 </div>
 <nav class="navbar navbar-expand-lg bg-body-tertiary display-6">
@@ -21,6 +21,10 @@
 
           <li class="nav-item">
             <a class="nav-link" href="{{route('user.contribution')}}">Contributions</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('user.payments')}}">Payments</a>
           </li>
 
           <li class="nav-item">

@@ -49,11 +49,13 @@ class User extends Authenticatable
     }
 
     
-    public function groups() : HasMany{
+    public function groups() : HasMany
+    {
         return $this->hasMany(Group::class);
     }
 
-    public function userGroups() : HasMany{
+    public function userGroups() : HasMany
+    {
         return $this->hasMany(UserGroup::class);
     }
     public function deposits() : HasMany
@@ -61,8 +63,14 @@ class User extends Authenticatable
         return $this->hasMany(Deposit::class);
     }
 
-    public function contributions() :HasMany
+    public function contributions() : HasMany
     {
         return $this->hasMany(Contribution::class);
     }
+
+    public function payments() : HasMany
+    {
+        return $this->hasMany(Payment::class);
+    }
+
 }

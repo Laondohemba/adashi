@@ -67,6 +67,10 @@
                           <li class="nav-item">
                               <a class="nav-link" href="{{ route('deposits.index') }}">Deposits</a>
                           </li>
+
+                          <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.payments') }}">Payments</a>
+                        </li>
   
                           <li class="nav-item">
                               <a class="nav-link" href="#">Withdrawals</a>
