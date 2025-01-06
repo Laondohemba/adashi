@@ -5,7 +5,7 @@
         <thead>
           <tr>
             <th scope="col">S/N</th>
-            <th scope="col">Name</th>
+            <th scope="col">User</th>
             <th scope="col">Group</th>
             <th scope="col">Amount</th>
             <th scope="col">Round</th>

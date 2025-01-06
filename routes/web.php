@@ -33,6 +33,7 @@ Route::prefix('admin')->middleware(AdminAuthenticate::class)->group(function () 
     Route::get('/contributions', [ContributionController::class, 'contributions'])->name('admin.contribution');
     Route::get('/payments', [PaymentController::class, 'payments'])->name('admin.payments');
     Route::post('/payment/{payment}', [PaymentController::class, 'approvePayment'])->name('payment.approve');
+    Route::get('/interests', [PaymentController::class, 'interests'])->name('admin.interests');
 
     Route::post('group/members/{group}', [GroupController::class, 'approveMembership'])->name('group.approve');
     Route::get('/deposits', [DepositController::class, 'index'])->name('deposits.index');

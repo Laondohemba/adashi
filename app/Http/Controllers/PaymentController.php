@@ -82,4 +82,10 @@ class PaymentController extends Controller
 
     }
 
+    public function interests(){
+        $interests = Interest::with('user')->get();
+
+        return view('admins.interests', ['interests' => $interests]);
+    }
+
 }

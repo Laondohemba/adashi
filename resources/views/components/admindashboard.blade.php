@@ -41,7 +41,7 @@
         {{-- dashboard --}}
         <div class="my-container">
           <h3>Welcome back 👋🏿 {{ auth('admin')->user()->username }}</h3>
-          <nav class="navbar navbar-expand-lg bg-body-tertiary display-6">
+          <nav class="navbar navbar-expand-lg bg-body-tertiary">
               <div class="container-fluid">
                   <a class="navbar-brand" href="{{ route('admin.dashboard') }}">Dashboard</a>
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -70,6 +70,10 @@
 
                           <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.payments') }}">Payments</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.interests') }}">Interests</a>
                         </li>
   
                           <li class="nav-item">
