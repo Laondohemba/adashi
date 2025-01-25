@@ -9,7 +9,37 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    {{-- font awesome link --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {{-- google fonts link --}}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+<style>
+    .sidebar-toggler {
+        position: fixed !important;
+        top: 40px !important;
+        width: fit-content;
+
+    }
+    .sidebar {
+        position: fixed !important;
+        top: 100px !important;
+    }
+    .content {
+        min-height: 100vh;
+        overflow-y: auto;
+    }
+    @media(max-width:550px){
+        .sidebar{
+            padding: 0 !important;
+            max-height: fit-content !important;
+        }
+        .content{
+            min-width: 100%;
+        }
+    }
+</style>
 
 <body>
     <div class="whole_page pb-5">
@@ -18,7 +48,8 @@
             <div class="row head align-items-center">
                 <div class="name col-2 text-white ms-2 ps-5">
                     <h1>
-                        <a href="{{ route('admin.dashboard') }}" class="text-decoration-none text-light">{{ env('APP_NAME') }} </a>
+                        <a href="{{ route('admin.dashboard') }}"
+                            class="text-decoration-none text-light">{{ env('APP_NAME') }} </a>
                     </h1>
                 </div>
                 <div class="sections col-9">
@@ -38,56 +69,64 @@
                 </div>
             </div>
         </div>
+
         {{-- dashboard --}}
-        <div class="my-container">
-          <h3>Welcome back 👋🏿 {{ auth('admin')->user()->username }}</h3>
-          <nav class="navbar navbar-expand-lg bg-body-tertiary">
-              <div class="container-fluid">
-                  <a class="navbar-brand" href="{{ route('admin.dashboard') }}">Dashboard</a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarNav">
-                      <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('showgroups') }}">Groups</a>
-                        </li>
-                          <li class="nav-item">
-                              <a class="nav-link" href="{{ route('creategroup') }}">Create group</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.contribution') }}">Contributions</a>
-                        </li>
-  
-                          <li class="nav-item">
-                              <a class="nav-link" href="#">Users</a>
-                          </li>
-  
-                          <li class="nav-item">
-                              <a class="nav-link" href="{{ route('deposits.index') }}">Deposits</a>
-                          </li>
+        <div class="container-fluid" style="margin-top: 50px">
+            <div class="row">
+                    <!-- Sidebar Toggler -->
+                    <button class="btn btn-secondary d-md-none my-3 sidebar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        Menu &#8594;
+                    </button>
+                <!-- Sidebar -->
+                <nav class="col-4 col-lg-2 bg-light py-5 d-md-block collapse sidebar" id="sidebarMenu">
 
-                          <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.payments') }}">Payments</a>
-                        </li>
+                    <div class="sticky-top d-md-block collapse" id="sidebarMenu">
+                        <ul class="nav flex-column ps-2">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('showgroups') }}">Groups</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('creategroup') }}">Create group</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.contribution') }}">Contributions</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('deposits.index') }}">Deposits</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.payments') }}">Payments</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.interests') }}">Interests</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Withdrawals</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.interests') }}">Interests</a>
-                        </li>
-  
-                          <li class="nav-item">
-                              <a class="nav-link" href="#">Withdrawals</a>
-                          </li>
-                          
-                      </ul>
-                  </div>
-              </div>
-          </nav>
+                <!-- Main Content -->
+                <main class="col-8 ms-sm-auto col-lg-10 px-md-4 content">
+                    <h3>Welcome back 👋🏿 {{ auth('admin')->user()->username }}</h3>
+                    <div class="my-container">
+                        {{ $slot }}
+                    </div>
+                </main>
+
+            </div>
         </div>
-        <div class="my-container" style="min-height: 100vh">
-            {{ $slot }}
-        </div>
+
+
+
+
+
 
     </div>
     </div>
