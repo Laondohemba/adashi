@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ env('APP_NAME') }}</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -15,31 +16,6 @@
     {{-- google fonts link --}}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<style>
-    .sidebar-toggler {
-        position: fixed !important;
-        top: 40px !important;
-        width: fit-content;
-
-    }
-    .sidebar {
-        position: fixed !important;
-        top: 100px !important;
-    }
-    .content {
-        min-height: 100vh;
-        overflow-y: auto;
-    }
-    @media(max-width:550px){
-        .sidebar{
-            padding: 0 !important;
-            max-height: fit-content !important;
-        }
-        .content{
-            min-width: 100%;
-        }
-    }
-</style>
 
 <body>
     <div class="whole_page pb-5">
@@ -122,11 +98,6 @@
 
             </div>
         </div>
-
-
-
-
-
 
     </div>
     </div>

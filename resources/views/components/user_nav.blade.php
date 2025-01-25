@@ -1,36 +1,51 @@
 <div class="d-flex justify-content-between">
-  <h3>Welcome back 👋🏿 {{ ucwords(auth()->user()->username) }}</h3>
-  <p>Account Balance: <strong>&#8358; {{ number_format(auth()->user()->account_balance, 2) }} </strong></p>
-</div>
-<nav class="navbar navbar-expand-lg bg-body-tertiary display-6">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="{{route('userdashboard')}}">Dashboard</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
 
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('user.showGroups')}}">Groups</a>
-          </li>
+{{-- dashboard --}}
+<div class="container-fluid" style="margin-top: 50px">
+    <div class="row">
+        <!-- Sidebar Toggler -->
+        <button class="btn btn-secondary d-md-none my-3 sidebar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            Menu &#8594;
+        </button>
+        <!-- Sidebar -->
+        <nav class="col-4 col-lg-2 bg-light py-5 d-md-block collapse sidebar" id="sidebarMenu">
 
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('deposits.create')}}">Deposit</a>
-          </li>
+            <div class="sticky-top d-md-block collapse" id="sidebarMenu">
+                <ul class="nav flex-column ps-2">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('userdashboard') }}">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('user.showGroups') }}">Groups</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('deposits.create') }}">Deposit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('user.contribution') }}">Contributions</a>
+                    </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('user.contribution')}}">Contributions</a>
-          </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('user.payments') }}">Payments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Withdrawals</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('user.payments')}}">Payments</a>
-          </li>
+        <!-- Main Content -->
+        <main class="col-8 ms-sm-auto col-lg-10 px-md-4 content">
+            <div class="my-container">
 
-          <li class="nav-item">
-            <a class="nav-link" href="#">Withdrawal</a>
-          </li>
-        </ul>
-      </div>
+                <h3>Welcome back 👋🏿 {{ ucwords(auth()->user()->username) }}</h3>
+                <p>Account Balance: <strong>&#8358; {{ number_format(auth()->user()->account_balance, 2) }} </strong>
+                </p>
+                {{ $slot }}
+            </div>
+        </main>
+
     </div>
-  </nav>
+</div>

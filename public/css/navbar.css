@@ -1,0 +1,23 @@
+.sidebar-toggler {
+    position: fixed !important;
+    top: 40px !important;
+    width: fit-content !important;
+
+}
+.sidebar {
+    position: fixed !important;
+    top: 100px !important;
+}
+.content {
+    min-height: 100vh;
+    overflow-y: auto;
+}
+@media(max-width:550px){
+    .sidebar{
+        padding: 0 !important;
+        max-height: fit-content !important;
+    }
+    .content{
+        min-width: 100%;
+    }
+}
